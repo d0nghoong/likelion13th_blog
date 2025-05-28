@@ -1,4 +1,4 @@
-/*package likelion13th.blog.dto;
+package likelion13th.blog.dto;
 
 import likelion13th.blog.domain.Article;
 import likelion13th.blog.domain.Comment;
@@ -21,4 +21,4 @@ public class AddCommentRequest {
                 .createdAt(LocalDateTime.now())
                 .build();
     }
-}*/
+}

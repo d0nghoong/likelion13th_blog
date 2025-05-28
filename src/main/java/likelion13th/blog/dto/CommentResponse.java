@@ -1,4 +1,4 @@
-/*package likelion13th.blog.dto;
+package likelion13th.blog.dto;
 
 import likelion13th.blog.domain.Comment;
 import lombok.AllArgsConstructor;
@@ -26,4 +26,4 @@ public class CommentResponse {
                 .build();
 
     }
-}*/
+}

@@ -1,4 +1,4 @@
-/*package likelion13th.blog.Service;
+package likelion13th.blog.Service;
 
 import jakarta.persistence.EntityNotFoundException;
 import jakarta.transaction.Transactional;
@@ -18,18 +18,19 @@ public class CommentService {
     private final ArticleRepository articleRepository;
 
     @Transactional
-    public CommentResponse addComment(long articleId, AddCommentRequest request){
-        Article article=articleRepository.findById(articleId)
-                .orElseThrow(()->new EntityNotFoundException("해당 id의 게시글을 찾을 수 없습니다"));
-        Comment comment=request.toEntity(article);
-        comment=commentRepository.save(comment);
+    public CommentResponse addComment(long articleId, AddCommentRequest request) {
+        Article article = articleRepository.findById(articleId)
+                .orElseThrow(() -> new EntityNotFoundException("해당 id의 게시글을 찾을 수 없습니다"));
+        Comment comment = request.toEntity(article);
+        comment = commentRepository.save(comment);
 
         article.increaseCommentCount();
 
         return CommentResponse.of(comment);
     }
+}
 
-    @Transactional
+    /*@Transactional
     public void deleteComment(long commentId, DeleteRequest request){
         Comment comment=commentRepository.findById(commentId)
                 .orElseThrow(()->new EntityNotFoundException("해당 id의 게시글을 찾을 수 없습니다"));

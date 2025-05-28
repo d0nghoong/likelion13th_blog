@@ -5,7 +5,7 @@ import lombok.*;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
-/*import java.time.LocalDateTime;
+import java.time.LocalDateTime;
 @Entity
 @Getter @Setter
 @Builder
@@ -34,4 +34,4 @@ public class Comment {
     @Column(nullable = false)
     private LocalDateTime createdAt;
 
-}*/
+}
