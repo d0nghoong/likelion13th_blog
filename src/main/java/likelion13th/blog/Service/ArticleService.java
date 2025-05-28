@@ -3,19 +3,19 @@ package likelion13th.blog.Service;
 import jakarta.persistence.EntityNotFoundException;
 import jakarta.transaction.Transactional;
 import likelion13th.blog.domain.Article;
-import likelion13th.blog.dto.AddArticleRequest;
-import likelion13th.blog.dto.ArticleResponse;
-import likelion13th.blog.dto.DeleteRequest;
-import likelion13th.blog.dto.SimpleArticleResponse;
-import likelion13th.blog.dto.UpdateArticleRequest;
+import likelion13th.blog.dto.request.AddArticleRequest;
+import likelion13th.blog.dto.response.ArticleDetailResponse;
+import likelion13th.blog.dto.response.ArticleResponse;
+import likelion13th.blog.dto.request.DeleteRequest;
+import likelion13th.blog.dto.response.CommentResponse;
+import likelion13th.blog.dto.response.SimpleArticleResponse;
+import likelion13th.blog.dto.request.UpdateArticleRequest;
 import likelion13th.blog.repository.ArticleRepository;
 import likelion13th.blog.repository.CommentRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.NoSuchElementException;
 
 @Service
 @RequiredArgsConstructor
@@ -43,14 +43,20 @@ public class ArticleService {
         return articleResponseList;
     }
 
-    public ArticleResponse getArticle(Long id){
+    private List<CommentResponse> getCommentList(Article article){
+        return commentRepository.findByArticle(article).stream()
+                .map(CommentResponse::of)
+                .toList();
+    }
+    public ArticleDetailResponse getArticle(Long id){
          /*1. JPA의 findById()를 사용하여 DB에서 id가 일치하는 게시글 찾기.
               id가 일치하는 게시글이 DB에 없으면 에러 반환*/
         Article article=articleRepository.findById(id)
                 .orElseThrow(()-> new EntityNotFoundException("해당 ID의 게시글을 찾을 수 없습니다. ID: "+id));
-
-        //2. ArticleResponse DTO 생성하여 반환
-        return ArticleResponse.of(article);
+        //해당 게시글의 댓글 가져오기
+        List<CommentResponse> comments=getCommentList(article);
+      
+        return ArticleDetailResponse.of(article,comments);
     }
     @Transactional
     public ArticleResponse updateArticle(Long id, UpdateArticleRequest request){

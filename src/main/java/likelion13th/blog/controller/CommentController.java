@@ -1,32 +1,18 @@
 package likelion13th.blog.controller;
 
-import likelion13th.blog.dto.*;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
-import likelion13th.blog.dto.ApiResponse;
-import likelion13th.blog.dto.DeleteRequest;
+import likelion13th.blog.dto.response.ApiResponse;
+import likelion13th.blog.dto.request.DeleteRequest;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import likelion13th.blog.dto.ApiResponse;
-import likelion13th.blog.dto.DeleteRequest;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
 import likelion13th.blog.Service.CommentService;
-import likelion13th.blog.dto.AddCommentRequest;
-import likelion13th.blog.dto.ApiResponse;
-import likelion13th.blog.dto.CommentResponse;
-import likelion13th.blog.dto.DeleteRequest;
+import likelion13th.blog.dto.request.AddCommentRequest;
+import likelion13th.blog.dto.response.CommentResponse;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 
