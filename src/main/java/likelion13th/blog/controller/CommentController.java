@@ -47,12 +47,12 @@ public class CommentController {
                 .body((new ApiResponse(true, 201, "댓글 등록 성공", response)));
 
     }
-}
 
-/*    @DeleteMapping("/{commentId}")
-    public ResponseEntity<ApiResponse> deleteComment(@PathVariable long commentId, @RequestBody DeleteRequest request){
-        commentService.deleteComment(commentId,request);
-        return ResponseEntity.ok(new ApiResponse(true,200,"댓글 삭제 성공"));
+
+    @DeleteMapping("/{commentId}")
+    public ResponseEntity<ApiResponse> deleteComment(@PathVariable long commentId, @RequestBody DeleteRequest request) {
+        commentService.deleteComment(commentId, request);
+        return ResponseEntity.ok(new ApiResponse(true, 200, "댓글 삭제 성공"));
     }
 }
-*/
+

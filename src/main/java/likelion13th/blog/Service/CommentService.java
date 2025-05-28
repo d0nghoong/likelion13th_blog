@@ -28,19 +28,20 @@ public class CommentService {
 
         return CommentResponse.of(comment);
     }
-}
 
-    /*@Transactional
-    public void deleteComment(long commentId, DeleteRequest request){
-        Comment comment=commentRepository.findById(commentId)
-                .orElseThrow(()->new EntityNotFoundException("해당 id의 게시글을 찾을 수 없습니다"));
 
-        if(!request.getPassword().equals(comment.getPassword())) {
+    @Transactional
+    public void deleteComment(long commentId, DeleteRequest request) {
+        Comment comment = commentRepository.findById(commentId)
+                .orElseThrow(() -> new EntityNotFoundException("해당 id의 게시글을 찾을 수 없습니다"));
+
+        if (!request.getPassword().equals(comment.getPassword())) {
             throw new RuntimeException("해당 댓글에 대한 삭제 권한이 없습니다");
         }
 
-            commentRepository.deleteById(commentId);
-            comment.getArticle().decreaseCommentCount();
-        }
-    }*/
+        commentRepository.deleteById(commentId);
+        comment.getArticle().decreaseCommentCount();
+    }
+}
+
 
